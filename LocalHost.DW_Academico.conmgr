@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.DW_Academico"
+  DTS:DTSID="{8854DF3E-95F1-4E84-B725-FF06E24790D3}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.;Initial Catalog=DW_Academico;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Ayudantia 2-{8854DF3E-95F1-4E84-B725-FF06E24790D3}LocalHost.DW_Academico;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

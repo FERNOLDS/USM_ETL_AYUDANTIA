@@ -1,0 +1,1564 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/29/2025 5:00:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="FERNOLDS"
+  DTS:CreatorName="FERNOLDS\afern"
+  DTS:DTSID="{ABB5B161-24A2-4C4A-8F86-5FB5CB85C089}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="13322"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{FDEFBB49-AE5B-470A-8C94-1BF03F15C468}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Paises"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{0DE114DE-A332-4324-8692-DD5AF5408811}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Paises"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Paises\Agregado"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Agregado;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;3"
+              description="Agrega datos mediante funciones como Average, Sum, Count, Max y Min. Por ejemplo, se agrupan datos para calcular la suma de las ventas por producto o el promedio de visitas por día."
+              name="Agregado"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número aproximado de claves GROUP BY que produce la agregación. Mínimo indica 500.000 valores de clave, Medio indica 5.000.000 de valores de clave y Alto indica más de 25.000.000 de valores de clave. No especificado indica que no se usó ningún valor de KeyScale."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Especifica el número exacto de claves GROUP BY que produce la agregación. Si se especifica un valor de KeyScale, el valor de Keys tiene prioridad."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número aproximado de valores distintos de una columna que cuenta la agregación de forma distintiva. Mínimo indica 500.000 valores de clave, Medio indica 5.000.000 de valores de clave y Alto indica más de 25.000.000 valores de clave. No especificado indica que no se usa ningún valor de CountDistinctScale."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Especifica el número exacto de valores distintos de una columna que cuenta la agregación de forma distintiva. Si se especifica un valor de CountDistinctScale, el valor de CountDistinctKeys tiene prioridad."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje en el que puede ampliarse la memoria durante la agregación. Los valores válidos están comprendidos entre 1 y 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_Paises\Agregado.Inputs[Entrada de agregado 1]"
+                  name="Entrada de agregado 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Paises\Agregado.Inputs[Entrada de agregado 1].Columns[id_pais_int]"
+                      cachedDataType="i4"
+                      cachedName="id_pais_int"
+                      lineageId="Package\DFT_Paises\DC_id_pais.Outputs[Salida de conversión de datos].Columns[id_pais_int]" />
+                    <inputColumn
+                      refId="Package\DFT_Paises\Agregado.Inputs[Entrada de agregado 1].Columns[pais_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="pais_clean"
+                      lineageId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[pais_clean]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Paises\Agregado.Outputs[Salida de agregado 1]"
+                  name="Salida de agregado 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el número aproximado de claves GROUP BY que produce la agregación. Mínimo indica 500.000 valores de clave, Medio indica 5.000.000 de valores de clave y Alto indica más de 25.000.000 de valores de clave. No especificado indica que no se usó ningún valor de KeyScale."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Especifica el número exacto de claves GROUP BY que produce la agregación. Si se especifica un valor de KeyScale, el valor de Keys tiene prioridad."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\Agregado.Outputs[Salida de agregado 1].Columns[id_pais_int]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\Agregado.Outputs[Salida de agregado 1].Columns[id_pais_int]"
+                      name="id_pais_int">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el id. de la columna de entrada usada en la agregación."
+                          name="AggregationColumnId">#{Package\DFT_Paises\DC_id_pais.Outputs[Salida de conversión de datos].Columns[id_pais_int]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el tipo de agregación."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica si la columna requiere tratamiento especial porque puede contener datos de tamaño excesivo o porque requiere mayor precisión que el tipo de datos float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación de cadenas."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Paises\Agregado.Outputs[Salida de agregado 1].Columns[pais_clean]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\DFT_Paises\Agregado.Outputs[Salida de agregado 1].Columns[pais_clean]"
+                      name="pais_clean">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el id. de la columna de entrada usada en la agregación."
+                          name="AggregationColumnId">#{Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[pais_clean]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el tipo de agregación."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indica si la columna requiere tratamiento especial porque puede contener datos de tamaño excesivo o porque requiere mayor precisión que el tipo de datos float."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación de cadenas."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Paises\Búsqueda"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Búsqueda"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dwh].[dim_pais]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dwh].[dim_pais]) [refTable]
+where [refTable].[id_pais] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_pais" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="pais" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\DFT_Paises\Agregado.Outputs[Salida de agregado 1].Columns[id_pais_int]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Paises\Búsqueda.Connections[OleDbConnection]"
+                  connectionManagerID="{8854DF3E-95F1-4E84-B725-FF06E24790D3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_Academico]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Paises\Búsqueda.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Paises\Búsqueda.Inputs[Entrada de búsqueda].Columns[id_pais_int]"
+                      cachedDataType="i4"
+                      cachedName="id_pais_int"
+                      lineageId="Package\DFT_Paises\Agregado.Outputs[Salida de agregado 1].Columns[id_pais_int]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">id_pais</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Paises\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\DFT_Paises\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Paises\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\DFT_Paises\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Paises\Búsqueda.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\DFT_Paises\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Paises\CS_ValidaObligatorios"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="CS_ValidaObligatorios"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Paises\CS_ValidaObligatorios.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Paises\CS_ValidaObligatorios.Inputs[Entrada de división condicional].Columns[id_pais_str]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_pais_str"
+                      lineageId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[id_pais_str]" />
+                    <inputColumn
+                      refId="Package\DFT_Paises\CS_ValidaObligatorios.Inputs[Entrada de división condicional].Columns[pais_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="pais_clean"
+                      lineageId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[pais_clean]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Paises\CS_ValidaObligatorios.Outputs[a_rechazo]"
+                  description="Salida 1 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="a_rechazo"
+                  synchronousInputId="Package\DFT_Paises\CS_ValidaObligatorios.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">[ISNULL](#{Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[id_pais_str]}) || [LEN](#{Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[id_pais_str]}) == 0 || [ISNULL](#{Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[pais_clean]}) || [LEN](#{Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[pais_clean]}) == 0</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(id_pais_str) || LEN(id_pais_str) == 0 || ISNULL(pais_clean) || LEN(pais_clean) == 0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Paises\CS_ValidaObligatorios.Outputs[a_limpios]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="a_limpios"
+                  synchronousInputId="Package\DFT_Paises\CS_ValidaObligatorios.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Paises\CS_ValidaObligatorios.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\DFT_Paises\CS_ValidaObligatorios.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\CS_ValidaObligatorios.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\CS_ValidaObligatorios.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\CS_ValidaObligatorios.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\CS_ValidaObligatorios.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Paises\DC_id_pais"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversión de datos;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Conversión de datos"
+              name="DC_id_pais"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Paises\DC_id_pais.Inputs[Entrada de conversión de datos]"
+                  name="Entrada de conversión de datos">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Paises\DC_id_pais.Inputs[Entrada de conversión de datos].Columns[id_pais_str]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_pais_str"
+                      lineageId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[id_pais_str]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Paises\DC_id_pais.Outputs[Salida de conversión de datos]"
+                  exclusionGroup="1"
+                  name="Salida de conversión de datos"
+                  synchronousInputId="Package\DFT_Paises\DC_id_pais.Inputs[Entrada de conversión de datos]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DC_id_pais.Outputs[Salida de conversión de datos].Columns[id_pais_int]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Paises\DC_id_pais.Outputs[Salida de conversión de datos].Columns[id_pais_int]"
+                      name="id_pais_int"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[id_pais_str]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Paises\DC_id_pais.Outputs[Salida de error de conversión de datos]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de conversión de datos"
+                  synchronousInputId="Package\DFT_Paises\DC_id_pais.Inputs[Entrada de conversión de datos]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DC_id_pais.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\DC_id_pais.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\DC_id_pais.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\DC_id_pais.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Paises\Destino de OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino de OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dwh].[dim_pais]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Paises\Destino de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{8854DF3E-95F1-4E84-B725-FF06E24790D3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_Academico]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Paises\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Paises\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[id_pais_int]"
+                      cachedDataType="i4"
+                      cachedName="id_pais_int"
+                      externalMetadataColumnId="Package\DFT_Paises\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_pais]"
+                      lineageId="Package\DFT_Paises\Agregado.Outputs[Salida de agregado 1].Columns[id_pais_int]" />
+                    <inputColumn
+                      refId="Package\DFT_Paises\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[pais_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="pais_clean"
+                      externalMetadataColumnId="Package\DFT_Paises\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[pais]"
+                      lineageId="Package\DFT_Paises\Agregado.Outputs[Salida de agregado 1].Columns[pais_clean]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Paises\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_pais]"
+                      dataType="i4"
+                      name="id_pais" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Paises\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[pais]"
+                      dataType="wstr"
+                      length="200"
+                      name="pais" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Paises\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\DFT_Paises\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Paises\DRV_LimpiarTexto"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="DRV_LimpiarTexto"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Paises\DRV_LimpiarTexto.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Paises\DRV_LimpiarTexto.Inputs[Entrada de columna derivada].Columns[id_pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="id_pais"
+                      lineageId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].Columns[id_pais]" />
+                    <inputColumn
+                      refId="Package\DFT_Paises\DRV_LimpiarTexto.Inputs[Entrada de columna derivada].Columns[pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="pais"
+                      lineageId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].Columns[pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\DFT_Paises\DRV_LimpiarTexto.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[id_pais_str]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[id_pais_str]"
+                      name="id_pais_str"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].Columns[id_pais]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(id_pais)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[pais_clean]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[pais_clean]"
+                      name="pais_clean"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].Columns[pais]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(pais)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\DFT_Paises\DRV_LimpiarTexto.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Paises\DRV_Rechazo_Paises"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="DRV_Rechazo_Paises"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Paises\DRV_Rechazo_Paises.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Paises\DRV_Rechazo_Paises.Inputs[Entrada de columna derivada].Columns[id_pais_str]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_pais_str"
+                      lineageId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[id_pais_str]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\DFT_Paises\DRV_Rechazo_Paises.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[origen_tabla]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="14"
+                      lineageId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[origen_tabla]"
+                      name="origen_tabla"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">"src.paises_raw"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"src.paises_raw"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[origen_columna]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[origen_columna]"
+                      name="origen_columna"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">"id_pais"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"id_pais"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[motivo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[motivo]"
+                      name="motivo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">"Campo obligatorio nulo o vacío"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Campo obligatorio nulo o vacío"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[valor_original]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="102"
+                      lineageId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[valor_original]"
+                      name="valor_original"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[REPLACENULL](#{Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada].Columns[id_pais_str]},"&lt;NULL&gt;")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(id_pais_str,"&lt;NULL&gt;")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\DFT_Paises\DRV_Rechazo_Paises.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Paises\DST_Rechazos_General"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="DST_Rechazos_General"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dwh].[rechazos]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Paises\DST_Rechazos_General.Connections[OleDbConnection]"
+                  connectionManagerID="{8854DF3E-95F1-4E84-B725-FF06E24790D3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_Academico]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].Columns[valor_original]"
+                      cachedDataType="wstr"
+                      cachedLength="102"
+                      cachedName="valor_original"
+                      externalMetadataColumnId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].ExternalColumns[valor_original]"
+                      lineageId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[valor_original]" />
+                    <inputColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].Columns[origen_tabla]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="origen_tabla"
+                      externalMetadataColumnId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].ExternalColumns[origen_tabla]"
+                      lineageId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[origen_tabla]" />
+                    <inputColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].Columns[origen_columna]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="origen_columna"
+                      externalMetadataColumnId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].ExternalColumns[origen_columna]"
+                      lineageId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[origen_columna]" />
+                    <inputColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].Columns[motivo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="motivo"
+                      externalMetadataColumnId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].ExternalColumns[motivo]"
+                      lineageId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada].Columns[motivo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_rechazo]"
+                      dataType="i4"
+                      name="id_rechazo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].ExternalColumns[origen_tabla]"
+                      dataType="wstr"
+                      length="100"
+                      name="origen_tabla" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].ExternalColumns[origen_columna]"
+                      dataType="wstr"
+                      length="100"
+                      name="origen_columna" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].ExternalColumns[motivo]"
+                      dataType="wstr"
+                      length="200"
+                      name="motivo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].ExternalColumns[valor_original]"
+                      dataType="nText"
+                      name="valor_original" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_registro]"
+                      dataType="dbTimeStamp"
+                      name="fecha_registro" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Paises\DST_Rechazos_General.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\DST_Rechazos_General.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\DST_Rechazos_General.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\DST_Rechazos_General.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Paises\SRC_paises_raw"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="SRC_paises_raw"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[src].[paises_raw]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Paises\SRC_paises_raw.Connections[OleDbConnection]"
+                  connectionManagerID="{FDB3346D-CA72-43D8-8666-339ED744B4DC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.OLTP_Academico_SUCIO]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].Columns[id_pais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].ExternalColumns[id_pais]"
+                      length="50"
+                      lineageId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].Columns[id_pais]"
+                      name="id_pais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].Columns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].ExternalColumns[pais]"
+                      length="200"
+                      lineageId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].Columns[pais]"
+                      name="pais"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].ExternalColumns[id_pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id_pais" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB].ExternalColumns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="pais" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de error de origen de OLE DB].Columns[id_pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de error de origen de OLE DB].Columns[id_pais]"
+                      name="id_pais" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de error de origen de OLE DB].Columns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de error de origen de OLE DB].Columns[pais]"
+                      name="pais" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Paises.Paths[a_limpios]"
+              endId="Package\DFT_Paises\DC_id_pais.Inputs[Entrada de conversión de datos]"
+              name="a_limpios"
+              startId="Package\DFT_Paises\CS_ValidaObligatorios.Outputs[a_limpios]" />
+            <path
+              refId="Package\DFT_Paises.Paths[a_rechazo]"
+              endId="Package\DFT_Paises\DRV_Rechazo_Paises.Inputs[Entrada de columna derivada]"
+              name="a_rechazo"
+              startId="Package\DFT_Paises\CS_ValidaObligatorios.Outputs[a_rechazo]" />
+            <path
+              refId="Package\DFT_Paises.Paths[Salida de agregado 1]"
+              endId="Package\DFT_Paises\Búsqueda.Inputs[Entrada de búsqueda]"
+              name="Salida de agregado 1"
+              startId="Package\DFT_Paises\Agregado.Outputs[Salida de agregado 1]" />
+            <path
+              refId="Package\DFT_Paises.Paths[Salida de columna derivada]"
+              endId="Package\DFT_Paises\CS_ValidaObligatorios.Inputs[Entrada de división condicional]"
+              name="Salida de columna derivada"
+              startId="Package\DFT_Paises\DRV_LimpiarTexto.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\DFT_Paises.Paths[Salida de columna derivada1]"
+              endId="Package\DFT_Paises\DST_Rechazos_General.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\DFT_Paises\DRV_Rechazo_Paises.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\DFT_Paises.Paths[Salida de conversión de datos]"
+              endId="Package\DFT_Paises\Agregado.Inputs[Entrada de agregado 1]"
+              name="Salida de conversión de datos"
+              startId="Package\DFT_Paises\DC_id_pais.Outputs[Salida de conversión de datos]" />
+            <path
+              refId="Package\DFT_Paises.Paths[Salida de entradas no coincidentes de búsqueda]"
+              endId="Package\DFT_Paises\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de entradas no coincidentes de búsqueda"
+              startId="Package\DFT_Paises\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]" />
+            <path
+              refId="Package\DFT_Paises.Paths[Salida de origen de OLE DB]"
+              endId="Package\DFT_Paises\DRV_LimpiarTexto.Inputs[Entrada de columna derivada]"
+              name="Salida de origen de OLE DB"
+              startId="Package\DFT_Paises\SRC_paises_raw.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="138,42.6666666666667"
+          Id="Package\DFT_Paises"
+          TopLeft="69.9999968707563,108.789472489724" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Paises">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="198.666666666667,42.6666666666667"
+          Id="Package\DFT_Paises\DST_Rechazos_General"
+          TopLeft="306.249986309559,239.491225718764" />
+        <NodeLayout
+          Size="188,42.6666666666667"
+          Id="Package\DFT_Paises\DRV_Rechazo_Paises"
+          TopLeft="54.3749975692482,242.210523656366" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\DFT_Paises\Destino de OLE DB"
+          TopLeft="532.499976195395,143.684208948692" />
+        <NodeLayout
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\DFT_Paises\SRC_paises_raw"
+          TopLeft="42.4999981001019,19.1578945264922" />
+        <NodeLayout
+          Size="186.666666666667,42.6666666666667"
+          Id="Package\DFT_Paises\CS_ValidaObligatorios"
+          TopLeft="48.1249978486449,161.473682437577" />
+        <NodeLayout
+          Size="135.333333333334,42.6666666666667"
+          Id="Package\DFT_Paises\DC_id_pais"
+          TopLeft="333.124985108152,154.631577249544" />
+        <NodeLayout
+          Size="125.333333333334,42.6666666666667"
+          Id="Package\DFT_Paises\Agregado"
+          TopLeft="297.499986700714,71.8421044743458" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\DFT_Paises\DRV_LimpiarTexto"
+          TopLeft="47.4999978765847,86.210525369215" />
+        <EdgeLayout
+          Id="Package\DFT_Paises.Paths[a_rechazo]"
+          TopLeft="144.916664375613,204.140349104244">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.0701745521221"
+              Start="0,0"
+              End="0,30.5701745521221">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5701745521221" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-23.15908203125,9.75383727606106,46.3181640625,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Paises.Paths[a_limpios]"
+          TopLeft="234.791664515312,179.385963176894">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98.3333205928409,0"
+              Start="0,0"
+              End="90.8333205928409,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="90.8333205928409,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="23.9520313901704,5,42.9292578125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Paises.Paths[Salida de origen de OLE DB]"
+          TopLeft="123.833331433435,61.8245611931589">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.33333310981612,24.3859641760561"
+              Start="0,0"
+              End="8.33333310981612,16.8859641760561">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.19298208802807" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.19298208802807"
+                    Point2="0,12.1929820880281"
+                    Point3="4,12.1929820880281" />
+                  <mssgle:LineSegment
+                    End="4.33333310981612,12.1929820880281" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.33333310981612,12.1929820880281"
+                    Point2="8.33333310981612,12.1929820880281"
+                    Point3="8.33333310981612,16.1929820880281" />
+                  <mssgle:LineSegment
+                    End="8.33333310981612,16.8859641760561" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Paises.Paths[Salida de conversión de datos]"
+          TopLeft="400.791651774819,154.631577249544">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-40.6249984074384,-40.1228061085317"
+              Start="0,0"
+              End="-40.6249984074384,-32.6228061085317">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-16.0614030542659" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-16.0614030542659"
+                    Point2="0,-20.0614030542659"
+                    Point3="-4,-20.0614030542659" />
+                  <mssgle:LineSegment
+                    End="-36.6249984074384,-20.0614030542659" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-36.6249984074384,-20.0614030542659"
+                    Point2="-40.6249984074384,-20.0614030542659"
+                    Point3="-40.6249984074384,-24.0614030542659" />
+                  <mssgle:LineSegment
+                    End="-40.6249984074384,-32.6228061085317" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Paises.Paths[Salida de columna derivada1]"
+          TopLeft="242.374997569248,262.184208020898">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63.8749887403105,0"
+              Start="0,0"
+              End="56.3749887403105,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="56.3749887403105,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Paises.Paths[Salida de columna derivada]"
+          TopLeft="132.166664543251,128.877192035882">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.29166663872689,32.5964904016957"
+              Start="0,0"
+              End="9.29166663872689,25.0964904016957">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2982452008479" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2982452008479"
+                    Point2="0,16.2982452008479"
+                    Point3="4,16.2982452008479" />
+                  <mssgle:LineSegment
+                    End="5.29166663872689,16.2982452008479" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.29166663872689,16.2982452008479"
+                    Point2="9.29166663872689,16.2982452008479"
+                    Point3="9.29166663872689,20.2982452008479" />
+                  <mssgle:LineSegment
+                    End="9.29166663872689,25.0964904016957" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="128,42.6666666666667"
+          Id="Package\DFT_Paises\Búsqueda"
+          TopLeft="441.249980274588,41.5438595589728" />
+        <EdgeLayout
+          Id="Package\DFT_Paises.Paths[Salida de agregado 1]"
+          TopLeft="360.166653367381,71.8421044743458">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81.0833269072078,-8.96491158203963"
+              Start="0,0"
+              End="73.5833269072078,-8.96491158203963">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-4.96491158203963" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-4.96491158203963"
+                    Point2="0,-8.96491158203963"
+                    Point3="4,-8.96491158203963" />
+                  <mssgle:LineSegment
+                    End="73.5833269072078,-8.96491158203963" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Paises.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="505.249980274588,84.2105262256395">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="113.249995920807,59.4736827230521"
+              Start="0,0"
+              End="113.249995920807,51.9736827230521">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.736841361526" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.736841361526"
+                    Point2="0,29.736841361526"
+                    Point3="4,29.736841361526" />
+                  <mssgle:LineSegment
+                    End="109.249995920807,29.736841361526" />
+                  <mssgle:CubicBezierSegment
+                    Point1="109.249995920807,29.736841361526"
+                    Point2="113.249995920807,29.736841361526"
+                    Point3="113.249995920807,33.736841361526" />
+                  <mssgle:LineSegment
+                    End="113.249995920807,51.9736827230521" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-50.2640254770965,34.736841361526,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Paises\DST_Rechazos_General">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Paises\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Paises\SRC_paises_raw">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Paises\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dwh].[dim_pais]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
